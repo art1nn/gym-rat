@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Pressable, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'; // Importando ícones
 
 export default function LobbyScreen({ navigation }) {
@@ -23,23 +23,20 @@ export default function LobbyScreen({ navigation }) {
 
       {/* Navbar */}
       <View style={styles.navbar}>
-
-      <Pressable style={styles.navItem} onPress={() => alert('Perfil')}>
+        <Pressable style={styles.navItem} onPress={() => navigation.navigate('ProfileScreen')}>
           <Icon name="person-outline" size={24} color="#1E90FF" />
           <Text style={styles.navText}>Perfil</Text>
         </Pressable>
-
-
-        <Pressable style={styles.navItem} onPress={() => alert('Criar uma Sala')}>
+        
+        <Pressable style={styles.navItem} onPress={() => navigation.navigate('CreateGroup')}>
           <Icon name="add-circle-outline" size={24} color="#32CD32" />
-          <Text style={styles.navText}>Criar Sala</Text>
+          <Text style={styles.navText}>Criar Grupo</Text>
         </Pressable>
 
         <Pressable style={styles.navItem} onPress={() => alert('Gerenciar Grupos')}>
           <Icon name="people-outline" size={24} color="#1E90FF" />
           <Text style={styles.navText}>Grupos</Text>
         </Pressable>
-
       </View>
     </View>
   );
@@ -50,25 +47,25 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f8f8f8',
     alignItems: 'center',
-    justifyContent: 'flex-start', // Alinha os itens no topo
+    justifyContent: 'flex-start',
     padding: 60,
   },
   header: {
     width: '100%',
     alignItems: 'center',
-    marginBottom: 20, // Espaçamento entre o título e o restante da página
+    marginBottom: 20,
   },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
     color: '#1E90FF',
-    marginBottom: 10, // Espaçamento entre o título e a linha arredondada
+    marginBottom: 10,
   },
   roundedLine: {
     width: '120%',
     height: 5,
     backgroundColor: '#ccc',
-    borderRadius: 5, // Torna a linha arredondada
+    borderRadius: 5,
   },
   userInfo: {
     width: '90%',
@@ -81,12 +78,12 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 5,
-    elevation: 3, // Sombra para Android
+    elevation: 3,
   },
-  profileImage: {
-    width: 40, // Reduzindo a largura
-    height: 40, // Reduzindo a altura
-    borderRadius: 20, // Deve ser metade da largura/altura para manter a imagem arredondada
+  logo: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
     marginBottom: 10,
   },
   userName: {
@@ -100,7 +97,7 @@ const styles = StyleSheet.create({
     color: '#666',
   },
   navbar: {
-    position:'absolute',
+    position: 'absolute',
     bottom: 40,
     flexDirection: 'row',
     justifyContent: 'space-around',

@@ -5,6 +5,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import LobbyScreen from './LobbyScreen';
 import RegisterScreen from './RegisterScreen';
 import ForgotPasswordScreen from './ForgotPasswordScreen';
+import ProfileScreen from './ProfileScreen';
+import CreateGroupScreen from './CreateGroupScreen'; // Import da tela de criação de grupo
+import GroupSettingsScreen from './GroupSettingsScreen'; // Import da tela de configurações do grupo
 
 const Stack = createStackNavigator();
 
@@ -60,6 +63,9 @@ export default function App() {
         <Stack.Screen name="Lobby" component={LobbyScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+        <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+        <Stack.Screen name="CreateGroupScreen" component={CreateGroupScreen} />
+        <Stack.Screen name="GroupSettingsScreen" component={GroupSettingsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
