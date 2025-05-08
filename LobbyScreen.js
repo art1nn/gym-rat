@@ -28,12 +28,12 @@ export default function LobbyScreen({ navigation }) {
           <Text style={styles.navText}>Perfil</Text>
         </Pressable>
         
-        <Pressable style={styles.navItem} onPress={() => navigation.navigate('CreateGroup')}>
+        <Pressable style={styles.navItem} onPress={() => navigation.navigate('CreateGroupScreen')}>
           <Icon name="add-circle-outline" size={24} color="#32CD32" />
           <Text style={styles.navText}>Criar Grupo</Text>
         </Pressable>
 
-        <Pressable style={styles.navItem} onPress={() => alert('Gerenciar Grupos')}>
+        <Pressable style={styles.navItem} onPress={() => navigation.navigate('ManageGroupsScreen')}>
           <Icon name="people-outline" size={24} color="#1E90FF" />
           <Text style={styles.navText}>Grupos</Text>
         </Pressable>
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    width: '145%',
+    width: '150%',
     height: 80,
     backgroundColor: '#fff',
     borderTopWidth: 1,

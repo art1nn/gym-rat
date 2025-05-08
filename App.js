@@ -8,6 +8,7 @@ import ForgotPasswordScreen from './ForgotPasswordScreen';
 import ProfileScreen from './ProfileScreen';
 import CreateGroupScreen from './CreateGroupScreen'; // Import da tela de criação de grupo
 import GroupSettingsScreen from './GroupSettingsScreen'; // Import da tela de configurações do grupo
+import ManageGroupsScreen from './ManageGroupsScreen'; // Import da tela de gerenciamento de grupos
 
 const Stack = createStackNavigator();
 
@@ -66,6 +67,7 @@ export default function App() {
         <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
         <Stack.Screen name="CreateGroupScreen" component={CreateGroupScreen} />
         <Stack.Screen name="GroupSettingsScreen" component={GroupSettingsScreen} />
+        <Stack.Screen name="ManageGroupsScreen" component={ManageGroupsScreen} /> 
       </Stack.Navigator>
     </NavigationContainer>
   );
