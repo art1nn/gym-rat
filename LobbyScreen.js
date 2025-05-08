@@ -1,8 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'; // Importando ícones
 
 export default function LobbyScreen({ navigation }) {
+  const userName = 'Usuário'; // Nome do usuário (pode ser dinâmico)
+  const userGroups = 2; // Quantidade de grupos (pode ser dinâmico)
+
   return (
     <View style={styles.container}>
       {/* Título no topo com linha arredondada */}
@@ -11,22 +14,32 @@ export default function LobbyScreen({ navigation }) {
         <View style={styles.roundedLine} />
       </View>
 
+      {/* Interface do usuário */}
+      <View style={styles.userInfo}>
+        <Image source={require('./assets/images/Perfil.png')} style={styles.logo} />
+        <Text style={styles.userName}>{userName}</Text>
+        <Text style={styles.userGroups}>Grupos: {userGroups}</Text>
+      </View>
+
       {/* Navbar */}
       <View style={styles.navbar}>
-        <Pressable style={styles.navItem} onPress={() => alert('Gerenciar Grupos')}>
-          <Icon name="people-outline" size={24} color="#1E90FF" />
-          <Text style={styles.navText}>Grupos</Text>
-        </Pressable>
 
-        <Pressable style={styles.navItem} onPress={() => alert('Perfil')}>
+      <Pressable style={styles.navItem} onPress={() => alert('Perfil')}>
           <Icon name="person-outline" size={24} color="#1E90FF" />
           <Text style={styles.navText}>Perfil</Text>
         </Pressable>
+
 
         <Pressable style={styles.navItem} onPress={() => alert('Criar uma Sala')}>
           <Icon name="add-circle-outline" size={24} color="#32CD32" />
           <Text style={styles.navText}>Criar Sala</Text>
         </Pressable>
+
+        <Pressable style={styles.navItem} onPress={() => alert('Gerenciar Grupos')}>
+          <Icon name="people-outline" size={24} color="#1E90FF" />
+          <Text style={styles.navText}>Grupos</Text>
+        </Pressable>
+
       </View>
     </View>
   );
@@ -57,13 +70,42 @@ const styles = StyleSheet.create({
     backgroundColor: '#ccc',
     borderRadius: 5, // Torna a linha arredondada
   },
+  userInfo: {
+    width: '90%',
+    backgroundColor: '#fff',
+    borderRadius: 15,
+    alignItems: 'center',
+    padding: 20,
+    marginBottom: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3, // Sombra para Android
+  },
+  profileImage: {
+    width: 40, // Reduzindo a largura
+    height: 40, // Reduzindo a altura
+    borderRadius: 20, // Deve ser metade da largura/altura para manter a imagem arredondada
+    marginBottom: 10,
+  },
+  userName: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 5,
+  },
+  userGroups: {
+    fontSize: 16,
+    color: '#666',
+  },
   navbar: {
-    position: 'absolute',
-    bottom: 30,
+    position:'absolute',
+    bottom: 40,
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    width: '100%',
+    width: '145%',
     height: 80,
     backgroundColor: '#fff',
     borderTopWidth: 1,

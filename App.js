@@ -1,21 +1,45 @@
-import React from 'react';
-import { Pressable, StyleSheet, Text, TextInput, View, Image } from 'react-native';
+import React, { useState } from 'react';
+import { Pressable, StyleSheet, Text, TextInput, View, Image, Alert } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LobbyScreen from './LobbyScreen';
 import RegisterScreen from './RegisterScreen';
-import ForgotPasswordScreen from './ForgotPasswordScreen'; // Importando a nova tela de recuperação de senha
+import ForgotPasswordScreen from './ForgotPasswordScreen';
 
 const Stack = createStackNavigator();
 
 function LoginScreen({ navigation }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    if (!email || !password) {
+      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+      return;
+    }
+    navigation.navigate('Lobby');
+  };
+
   return (
     <View style={styles.container}>
       <Image source={require('./assets/images/star.png')} style={styles.logo} />
       <Text style={styles.title}>Login</Text>
-      <TextInput style={styles.input} placeholder="Email" placeholderTextColor="#aaa" />
-      <TextInput style={styles.input} placeholder="Senha" placeholderTextColor="#aaa" secureTextEntry />
-      <Pressable style={styles.button} onPress={() => navigation.navigate('Lobby')}>
+      <TextInput
+        style={styles.input}
+        placeholder="Email"
+        placeholderTextColor="#aaa"
+        value={email}
+        onChangeText={setEmail}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Senha"
+        placeholderTextColor="#aaa"
+        secureTextEntry
+        value={password}
+        onChangeText={setPassword}
+      />
+      <Pressable style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Entrar</Text>
       </Pressable>
       <Pressable style={styles.buttonSecondary} onPress={() => navigation.navigate('Register')}>

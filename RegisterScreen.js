@@ -1,22 +1,62 @@
-import React from 'react';
-import { View, Text, TextInput, Pressable, StyleSheet, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TextInput, Pressable, StyleSheet, Image, Alert } from 'react-native';
 
 export default function RegisterScreen({ navigation }) {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const handleRegister = () => {
+    if (!username || !email || !password || !confirmPassword) {
+      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      Alert.alert('Erro', 'As senhas não coincidem.');
+      return;
+    }
+
+    Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
+    navigation.navigate('Login'); // Redireciona para a tela de login
+  };
+
   return (
     <View style={styles.container}>
       <Image source={require('./assets/images/star.png')} style={styles.logo} />
       <Text style={styles.title}>Cadastrar-se</Text>
-      <TextInput style={styles.input} placeholder="Nome de Usuário" placeholderTextColor="#aaa" />
-      <TextInput style={styles.input} placeholder="Email" placeholderTextColor="#aaa" />
-      <TextInput style={styles.input} placeholder="Senha" placeholderTextColor="#aaa" secureTextEntry />
-      <TextInput style={styles.input} placeholder="Confirme a Senha" placeholderTextColor="#aaa" secureTextEntry />
-      <Pressable
-        style={styles.button}
-        onPress={() => {
-          alert('Cadastro realizado com sucesso!');
-          navigation.navigate('Login'); // Redireciona para a tela de login
-        }}
-      >
+      <TextInput
+        style={styles.input}
+        placeholder="Nome de Usuário"
+        placeholderTextColor="#aaa"
+        value={username}
+        onChangeText={setUsername}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Email"
+        placeholderTextColor="#aaa"
+        value={email}
+        onChangeText={setEmail}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Senha"
+        placeholderTextColor="#aaa"
+        secureTextEntry
+        value={password}
+        onChangeText={setPassword}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Confirme a Senha"
+        placeholderTextColor="#aaa"
+        secureTextEntry
+        value={confirmPassword}
+        onChangeText={setConfirmPassword}
+      />
+      <Pressable style={styles.button} onPress={handleRegister}>
         <Text style={styles.buttonText}>Cadastrar</Text>
       </Pressable>
       <Pressable onPress={() => navigation.goBack()}>
